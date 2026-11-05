@@ -9,11 +9,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VIDEO = ROOT / "output" / "shanghai-1976-force-map-with-zhang.mp4"
+TIMELINE = json.loads((ROOT / "src" / "timeline.json").read_text(encoding="utf-8"))
+VIDEO = ROOT / "output" / "shanghai-1976-force-map.mp4"
 MUSIC_DIR = ROOT / "output" / "music"
-MASTER = MUSIC_DIR / "shanghai-1976-score-master.wav"
-FINAL = ROOT / "output" / "shanghai-1976-force-map-with-zhang-music.mp4"
-REPORT = MUSIC_DIR / "music-final-validation.json"
+MASTER = MUSIC_DIR / "shanghai-1976-historical-crisis-master.wav"
+FINAL = ROOT / "output" / "shanghai-1976-historical-crisis-review.mp4"
+REPORT = ROOT / "output" / "release-validation.json"
 
 
 def run(command: list[str]) -> subprocess.CompletedProcess[str]:
@@ -56,41 +57,56 @@ def probe(path: Path) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Master a selected score and mux it with the 60-second video")
+    parser = argparse.ArgumentParser(description="Master a selected score and mux it to the canonical timeline")
     parser.add_argument("input", type=Path)
+    parser.add_argument("--video", type=Path, default=VIDEO)
+    parser.add_argument("--output", type=Path, default=FINAL)
+    parser.add_argument("--master", type=Path, default=MASTER)
+    parser.add_argument("--report", type=Path, default=REPORT)
     args = parser.parse_args()
     source = args.input.resolve()
+    video = args.video.resolve()
+    final = args.output.resolve()
+    master = args.master.resolve()
+    report_path = args.report.resolve()
+    duration = float(TIMELINE["duration_seconds"])
+    fps = int(TIMELINE["fps"])
+    target_i = float(TIMELINE["audio"]["target_lufs"])
+    target_tp = float(TIMELINE["audio"]["true_peak_dbtp"])
     if not source.exists():
         raise SystemExit(f"Music file does not exist: {source}")
-    if not VIDEO.exists():
-        raise SystemExit(f"Video file does not exist: {VIDEO}")
+    if not video.exists():
+        raise SystemExit(f"Video file does not exist: {video}")
     MUSIC_DIR.mkdir(parents=True, exist_ok=True)
+    final.parent.mkdir(parents=True, exist_ok=True)
+    master.parent.mkdir(parents=True, exist_ok=True)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
 
     first = loudnorm_measure(source)
-    gain_db = constant_master_gain(first)
+    gain_db = constant_master_gain(first, target_i=target_i, target_tp=target_tp)
     audio_filter = (
         "aresample=48000," 
         "afade=t=in:st=0:d=0.005,"
-        "afade=t=out:st=59.995:d=0.005,"
-        "apad=pad_dur=60,atrim=duration=60,"
+        f"afade=t=out:st={duration - 0.005:.3f}:d=0.005,"
+        f"apad=pad_dur={duration},atrim=duration={duration},"
         f"volume={gain_db:.3f}dB"
     )
     run([
         "ffmpeg", "-y", "-hide_banner", "-i", str(source), "-vn", "-af", audio_filter,
-        "-ar", "48000", "-ac", "2", "-c:a", "pcm_s24le", str(MASTER),
+        "-ar", "48000", "-ac", "2", "-c:a", "pcm_s24le", str(master),
     ])
     run([
-        "ffmpeg", "-y", "-hide_banner", "-i", str(VIDEO), "-i", str(MASTER),
+        "ffmpeg", "-y", "-hide_banner", "-i", str(video), "-i", str(master),
         "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac",
-        "-b:a", "320k", "-ar", "48000", "-ac", "2", "-t", "60",
-        "-movflags", "+faststart", str(FINAL),
+        "-b:a", "320k", "-ar", "48000", "-ac", "2", "-t", f"{duration:.3f}",
+        "-movflags", "+faststart", str(final),
     ])
-    final_probe = probe(FINAL)
+    final_probe = probe(final)
     final_duration = float(final_probe["format"]["duration"])
     stream_types = [stream["codec_type"] for stream in final_probe["streams"]]
-    final_loudness = loudnorm_measure(MASTER)
+    final_loudness = loudnorm_measure(master)
     checks = {
-        "duration_is_60s": abs(final_duration - 60.0) <= 0.05,
+        "duration_matches_timeline_within_one_frame": abs(final_duration - duration) <= 1.0 / fps,
         "has_video": "video" in stream_types,
         "has_audio": "audio" in stream_types,
         "video_codec_h264": any(stream.get("codec_type") == "video" and stream.get("codec_name") == "h264" for stream in final_probe["streams"]),
@@ -99,19 +115,21 @@ def main() -> None:
     report = {
         "status": "PASS" if all(checks.values()) else "FAIL",
         "source_music": str(source),
-        "master": str(MASTER),
-        "final_video": str(FINAL),
+        "master": str(master),
+        "timeline": str((ROOT / "src" / "timeline.json").relative_to(ROOT)),
+        "video": str(video),
+        "final_video": str(final),
         "checks": checks,
         "probe": final_probe,
         "master_loudness": final_loudness,
         "mastering": {
-            "strategy": "constant gain constrained by -16 LUFS target and -1 dBTP ceiling",
+            "strategy": f"constant gain constrained by {target_i:g} LUFS target and {target_tp:g} dBTP ceiling",
             "source_loudness": first,
             "gain_db": round(gain_db, 3),
         },
-        "sha256": hash_file(FINAL),
+        "sha256": hash_file(final),
     }
-    REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if report["status"] != "PASS":
         raise SystemExit(1)

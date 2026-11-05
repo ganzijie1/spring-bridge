@@ -9,6 +9,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import data from './data.json';
+import timeline, {at, cue} from './timeline';
 
 const COLORS = {
   paper: '#e8e0cf',
@@ -147,11 +148,11 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
   const allNodes = data.locations;
   const militiaNodes = allNodes.filter((x) => x.side === 'militia');
   const suppressionNodes = allNodes.filter((x) => x.side === 'suppression');
-  const districtVisible = interpolate(frame, [620, 690], [0, 1], clamp);
-  const commandVisible = interpolate(frame, [360, 440], [0, 1], clamp);
-  const suppressionVisible = interpolate(frame, [1510, 1590], [0, 1], clamp);
-  const linkProgress = interpolate(frame, [900, 1130], [0, 1], clamp);
-  const takeoverProgress = interpolate(frame, [1580, 1810], [0, 1], clamp);
+  const districtVisible = interpolate(frame, [cue('district_reveal_start'), cue('district_reveal_end')], [0, 1], clamp);
+  const commandVisible = interpolate(frame, [cue('command_reveal_start'), cue('command_reveal_end')], [0, 1], clamp);
+  const suppressionVisible = interpolate(frame, [cue('suppression_reveal_start'), cue('suppression_reveal_end')], [0, 1], clamp);
+  const linkProgress = interpolate(frame, [cue('network_start'), cue('network_end')], [0, 1], clamp);
+  const takeoverProgress = interpolate(frame, [cue('takeover_route_start'), cue('takeover_route_end')], [0, 1], clamp);
   const militiaHq = data.locations.find((x) => x.id === 'militia_hq')!;
   const jiangnan = data.locations.find((x) => x.id === 'jiangnan')!;
   const textile = data.locations.find((x) => x.id === 'textile')!;
@@ -210,8 +211,8 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
         <text x="1210" y="260">杨浦</text>
       </g>
 
-      {frame >= 840 ? (
-        <g opacity={interpolate(frame, [840, 900], [0, 1], clamp)}>
+      {frame >= cue('network_start') ? (
+        <g opacity={interpolate(frame, [cue('network_start'), cue('network_start') + at(1.5)], [0, 1], clamp)}>
           <Route
             from={[militiaHq.lon, militiaHq.lat]}
             to={[jiangnan.lon, jiangnan.lat]}
@@ -229,7 +230,7 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
         </g>
       ) : null}
 
-      {frame >= 1560 ? (
+      {frame >= cue('suppression_reveal_start') ? (
         <g opacity={suppressionVisible}>
           <Route
             from={[naval.lon, naval.lat]}
@@ -252,7 +253,7 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
         <MapNode
           key={location.id}
           location={location}
-          delay={350 + index * 16}
+          delay={cue('command_reveal_start') + index * 16}
           visible={location.kind === 'distribution' ? districtVisible : commandVisible}
         />
       ))}
@@ -260,7 +261,7 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
         <MapNode
           key={location.id}
           location={location}
-          delay={1520 + index * 25}
+          delay={cue('suppression_reveal_start') + index * 25}
           visible={suppressionVisible}
         />
       ))}
@@ -271,8 +272,8 @@ const BaseMap: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const ForceSummary: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 280, 850, 38);
-  const reveal = interpolate(frame, [320, 520], [0, 1], clamp);
+  const opacity = fade(frame, cue('force_summary_start'), cue('force_summary_end'), at(1.25));
+  const reveal = interpolate(frame, [cue('force_count_start'), cue('force_count_end')], [0, 1], clamp);
   return (
     <div
       style={{
@@ -307,7 +308,7 @@ const ForceSummary: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const OfficialLedger: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 700, 1180, 35);
+  const opacity = fade(frame, cue('official_ledger_start'), cue('official_ledger_end'), at(1.15));
   const items = [
     ['27,000', '件/支武器'],
     ['225', '辆车辆'],
@@ -343,7 +344,7 @@ const OfficialLedger: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const Instruction: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 170, 830, 30);
+  const opacity = fade(frame, cue('instruction_start'), cue('instruction_end'), at(1));
   return (
     <div
       style={{
@@ -370,7 +371,7 @@ const Instruction: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const DisputedNodes: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 890, 1390, 35);
+  const opacity = fade(frame, cue('dispute_start'), cue('dispute_end'), at(1.15));
   return (
     <div
       style={{
@@ -395,8 +396,8 @@ const DisputedNodes: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const RegionalInset: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 1160, 1640, 34);
-  const progress = interpolate(frame, [1220, 1470], [0, 1], clamp);
+  const opacity = fade(frame, cue('regional_start'), cue('regional_end'), at(1.1));
+  const progress = interpolate(frame, [cue('regional_route_start'), cue('regional_route_end')], [0, 1], clamp);
   const points = {
     wuxi: {x: 175, y: 130},
     suzhou: {x: 285, y: 210},
@@ -467,7 +468,7 @@ const RegionalInset: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const TakeoverBand: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 1570, 2070, 35);
+  const opacity = fade(frame, cue('takeover_band_start'), cue('takeover_band_end'), at(1.15));
   return (
     <div
       style={{
@@ -499,7 +500,7 @@ const TakeoverBand: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const Timeline: React.FC<{frame: number}> = ({frame}) => {
-  const stages = [120, 470, 820, 1570, 1990];
+  const stages = [at(4), at(10), at(26), at(50), at(72)];
   const active = stages.reduce((last, threshold, index) => (frame >= threshold ? index : last), 0);
   return (
     <div
@@ -550,7 +551,7 @@ const Timeline: React.FC<{frame: number}> = ({frame}) => {
 };
 
 const SourceLedger: React.FC<{frame: number}> = ({frame}) => {
-  const opacity = fade(frame, 2070, 2400, 30);
+  const opacity = fade(frame, cue('source_ledger_start'), cue('source_ledger_end'), at(1));
   const tiers = [
     ['A级', '批注影印或可追原始记录', 'S1'],
     ['B级', '档案/口述研究与交叉解释', 'S2 · S6'],
@@ -603,11 +604,60 @@ const SourceLedger: React.FC<{frame: number}> = ({frame}) => {
   );
 };
 
+const TrialPhoto: React.FC<{frame: number}> = ({frame}) => {
+  const opacity = fade(
+    frame,
+    cue('trial_photo_start'),
+    cue('trial_photo_end'),
+    at(0.5),
+  );
+  if (frame < cue('trial_photo_start') || frame > cue('trial_photo_end')) return null;
+  return (
+    <>
+      <div
+        style={{
+          position: 'absolute',
+          left: 54,
+          top: 174,
+          width: 1400,
+          height: 790,
+          opacity: opacity * 0.58,
+          background: '#111719',
+          zIndex: 19,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 736,
+          top: 190,
+          width: 610,
+          opacity,
+          background: 'rgba(20,25,27,0.96)',
+          boxShadow: '0 18px 55px rgba(0,0,0,0.36)',
+          padding: '18px 18px 16px',
+          boxSizing: 'border-box',
+          zIndex: 20,
+        }}
+      >
+        <Img
+          src={staticFile('assets/zhang-chunqiao-trial-overlay.png')}
+          style={{display: 'block', width: '100%', height: 428, objectFit: 'contain'}}
+        />
+        <div style={{fontSize: 17, lineHeight: 1.5, color: '#d7dfdc', marginTop: 10}}>
+          后见影像：1980—1981年特别法庭审判，非1976年上海现场
+          <SourceTag ids={['P1']} compact />
+        </div>
+      </div>
+    </>
+  );
+};
+
 export const Shanghai1976: React.FC = () => {
   const frame = useCurrentFrame();
-  const introOpacity = fade(frame, 0, 190, 35);
-  const mapOpacity = interpolate(frame, [125, 205], [0, 1], clamp);
-  const textureScale = 1.03 + frame / 240000;
+  const introOpacity = fade(frame, 0, cue('intro_fade_end'), at(1.15));
+  const mapOpacity = interpolate(frame, [cue('map_fade_start'), cue('map_fade_end')], [0, 1], clamp);
+  const textureScale = 1.03 + frame / (timeline.duration_seconds * timeline.fps * 100);
 
   return (
     <AbsoluteFill style={{background: COLORS.paper, color: COLORS.ink, fontFamily: 'Microsoft YaHei, Noto Sans CJK SC, sans-serif', overflow: 'hidden'}}>
@@ -644,6 +694,7 @@ export const Shanghai1976: React.FC = () => {
         <RegionalInset frame={frame} />
         <TakeoverBand frame={frame} />
         <SourceLedger frame={frame} />
+        <TrialPhoto frame={frame} />
         <Timeline frame={frame} />
       </div>
 

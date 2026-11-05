@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "fps": 30,
+  "duration_seconds": 90,
+  "segments": [
+    {
+      "id": "intro",
+      "start": 0,
+      "end": 8,
+      "claim_ids": ["C1"],
+      "music": "low strings, distant pressure, no percussion barrage"
+    },
+    {
+      "id": "militia_deployment",
+      "start": 8,
+      "end": 26,
+      "claim_ids": ["C2", "C3", "C4"],
+      "music": "persistent low-string pulse, restrained snare"
+    },
+    {
+      "id": "arms_and_network",
+      "start": 26,
+      "end": 44,
+      "claim_ids": ["C5", "C6"],
+      "music": "dissonant brass grows, choir remains textural"
+    },
+    {
+      "id": "turning_point",
+      "start": 44,
+      "end": 48,
+      "claim_ids": ["C7", "C8"],
+      "music": "near-silence; no impact or gunfire effects"
+    },
+    {
+      "id": "suppression_pressure",
+      "start": 48,
+      "end": 72,
+      "claim_ids": ["C9", "C10"],
+      "music": "tragic theme enters, controlled escalation"
+    },
+    {
+      "id": "aftermath",
+      "start": 72,
+      "end": 90,
+      "claim_ids": ["C1", "C7", "C9", "C10"],
+      "music": "unresolved aftermath, no victory cadence"
+    }
+  ],
+  "cues": {
+    "intro_fade_end": 7,
+    "map_fade_start": 4.5,
+    "map_fade_end": 7.5,
+    "command_reveal_start": 9,
+    "command_reveal_end": 12,
+    "force_summary_start": 8,
+    "force_summary_end": 25,
+    "force_count_start": 10,
+    "force_count_end": 16,
+    "instruction_start": 12,
+    "instruction_end": 28,
+    "district_reveal_start": 20,
+    "district_reveal_end": 23,
+    "official_ledger_start": 24,
+    "official_ledger_end": 42,
+    "network_start": 29,
+    "network_end": 38,
+    "dispute_start": 30,
+    "dispute_end": 44,
+    "regional_start": 36,
+    "regional_end": 44,
+    "regional_route_start": 38,
+    "regional_route_end": 44,
+    "trial_photo_start": 44,
+    "trial_photo_fully_visible": 44.5,
+    "trial_photo_fade_out": 47.5,
+    "trial_photo_end": 48,
+    "suppression_reveal_start": 48,
+    "suppression_reveal_end": 52,
+    "takeover_route_start": 51,
+    "takeover_route_end": 64,
+    "takeover_band_start": 50,
+    "takeover_band_end": 72,
+    "source_ledger_start": 72,
+    "source_ledger_end": 90
+  },
+  "audio": {
+    "sample_rate": 48000,
+    "near_silence_start": 44,
+    "near_silence_end": 48,
+    "tragic_theme_start": 48,
+    "controlled_climax_start": 70,
+    "controlled_climax_end": 86,
+    "target_lufs": -16,
+    "true_peak_dbtp": -1
+  }
+}

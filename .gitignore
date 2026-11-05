@@ -1,6 +1,7 @@
 node_modules/
 output/
 .cache/
+.tools/
 .venv/
 .venv-*/
 *.log

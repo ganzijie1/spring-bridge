@@ -48,6 +48,13 @@
       "label": "回忆与研究材料",
       "note": "提出江南造船厂、中纺机更接近联络点而非完整指挥所",
       "url": "https://raw.githubusercontent.com/banned-historical-archives/banned-historical-archives3/main/a6c01981-a674-416b-ab3b-2fc3f84c1058.pdf"
+    },
+    {
+      "id": "P1",
+      "tier": "P",
+      "label": "张春桥特别法庭审判照片",
+      "note": "照片来源、年份、场合、编辑方式与版权风险另存于本地来源清单",
+      "url": "public/assets/zhang-trial-source.json"
     }
   ],
   "aggregate_forces": [
@@ -307,5 +314,97 @@
     "attribution": "后出材料称由张春桥传达",
     "caveat": "未见可独立核验的原始手令；按转述展示，不作原件断言",
     "source_ids": ["S5"]
-  }
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "assertion": "1976年10月6日至26日，上海政治与武装态势发生连续变化。",
+      "source_ids": ["S5"],
+      "locator": "来源级定位；待补页码级定位",
+      "certainty": "probable",
+      "risk": "high",
+      "visual_rule": "只显示事件区间，不补写未记载行动"
+    },
+    {
+      "id": "C2",
+      "assertion": "10月8日材料记载全市2,500人集中。",
+      "source_ids": ["S1"],
+      "locator": "1976-10-08批注影印",
+      "certainty": "confirmed",
+      "risk": "high",
+      "visual_rule": "只作全市汇总，不分配到单一地点"
+    },
+    {
+      "id": "C3",
+      "assertion": "10月8日材料记载全市31,000人待命。",
+      "source_ids": ["S1"],
+      "locator": "1976-10-08批注影印",
+      "certainty": "confirmed",
+      "risk": "high",
+      "visual_rule": "只作全市汇总，不逐区拆分"
+    },
+    {
+      "id": "C4",
+      "assertion": "民兵指挥部位于黄浦路20号，但全市集中和待命人数不能归入该点。",
+      "source_ids": ["S1", "S2"],
+      "locator": "S2来源正文；S1批注影印",
+      "certainty": "probable",
+      "risk": "high",
+      "visual_rule": "地点显示不附人员数"
+    },
+    {
+      "id": "C5",
+      "assertion": "黄浦、长宁、杨浦的武器弹药数字来自区级发放材料。",
+      "source_ids": ["S4"],
+      "locator": "来源级定位；待补PDF页码",
+      "certainty": "disputed",
+      "risk": "high",
+      "visual_rule": "标注官方/批判材料口径，不外推人员数"
+    },
+    {
+      "id": "C6",
+      "assertion": "江南造船厂和中纺机的节点性质存在指挥点与联络点之争。",
+      "source_ids": ["S3", "S6"],
+      "locator": "两类来源并列，待补PDF页码",
+      "certainty": "disputed",
+      "risk": "high",
+      "visual_rule": "争议节点使用虚线圆环"
+    },
+    {
+      "id": "C7",
+      "assertion": "“准备接受严重考验”仅以转述形式保留。",
+      "source_ids": ["S5"],
+      "locator": "后出材料转述；未见原始手令",
+      "certainty": "disputed",
+      "risk": "high",
+      "visual_rule": "必须同时显示转述与未见原件的说明"
+    },
+    {
+      "id": "C8",
+      "assertion": "张春桥审判照片拍摄于1980—1981年最高人民法院特别法庭，而非1976年上海现场。",
+      "source_ids": ["P1"],
+      "locator": "public/assets/zhang-trial-source.json",
+      "certainty": "confirmed",
+      "risk": "high",
+      "visual_rule": "照片卡必须显示实际年份和场合"
+    },
+    {
+      "id": "C9",
+      "assertion": "第60军方向只作战略方向示意，不能冒充逐日行军路线。",
+      "source_ids": ["S5"],
+      "locator": "来源级定位；公开分项兵力不足",
+      "certainty": "probable",
+      "risk": "high",
+      "visual_rule": "虚线方向，不显示人数"
+    },
+    {
+      "id": "C10",
+      "assertion": "东海舰队、海军上海基地和上海警备区只显示指挥与控制关系，不补写兵力。",
+      "source_ids": ["S5"],
+      "locator": "来源级定位；公开分项兵力不足",
+      "certainty": "probable",
+      "risk": "high",
+      "visual_rule": "虚线关系，不显示人数或虚构战斗"
+    }
+  ]
 }

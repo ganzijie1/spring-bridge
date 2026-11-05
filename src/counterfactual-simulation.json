@@ -1,0 +1,1141 @@
+{
+  "meta": {
+    "title": "张春桥抵沪与上海民兵起义：反事实推演",
+    "seed": 19761006,
+    "paths": 12000,
+    "days": 21,
+    "start_date": "1976-10-06",
+    "status": "counterfactual",
+    "historical_break": "张春桥未在北京被捕，而是成功抵达上海",
+    "warning": "所有战斗、节点失守与领导层结局均为模型条件分支，不是史实断言。"
+  },
+  "documented_baseline": {
+    "concentrated": 2500,
+    "standby": 31000,
+    "eligible_total": 33500,
+    "source_ids": [
+      "S1"
+    ]
+  },
+  "model": {
+    "modules": [
+      "隐状态阶段切换",
+      "有限阶段动员闸门",
+      "空间控制网络",
+      "群体参与均值场",
+      "信息冲击与通信衰减",
+      "非平衡资源约束",
+      "领导层竞争风险"
+    ],
+    "interpretation": "结构压力测试；参数是透明的情景假设，不是历史频率或客观概率。",
+    "condition": "无外省同盟介入、中央持续增援、铁路机场与沿江通道最终受控"
+  },
+  "summary": {
+    "collapse_share": 1.0,
+    "collapse_day": {
+      "p10": 13,
+      "p50": 14,
+      "p90": 15
+    },
+    "followed_branch": "collapse-conditioned median path",
+    "leadership_group_size": 8,
+    "leadership_outcomes": [
+      {
+        "label": "自裁",
+        "count": 2,
+        "weight": 0.34
+      },
+      {
+        "label": "被俘后处决",
+        "count": 6,
+        "weight": 0.42
+      },
+      {
+        "label": "被俘监禁",
+        "count": 0,
+        "weight": 0.14
+      },
+      {
+        "label": "脱离包围",
+        "count": 0,
+        "weight": 0.1
+      }
+    ]
+  },
+  "series": [
+    {
+      "day": 0,
+      "date": "1976-10-06",
+      "active_militia": {
+        "p10": 2500,
+        "p50": 2500,
+        "p90": 2500
+      },
+      "command": {
+        "p10": 0.8747,
+        "p50": 0.9198,
+        "p90": 0.9642
+      },
+      "communications": {
+        "p10": 0.7042,
+        "p50": 0.7804,
+        "p90": 0.8546
+      },
+      "supply": {
+        "p10": 0.5999,
+        "p50": 0.6898,
+        "p90": 0.7784
+      },
+      "public_participation": {
+        "p10": 0.2198,
+        "p50": 0.3114,
+        "p90": 0.4009
+      },
+      "resistance_control": {
+        "p10": 0.2149,
+        "p50": 0.2597,
+        "p90": 0.3037
+      },
+      "suppression_control": {
+        "p10": 0.2108,
+        "p50": 0.2494,
+        "p90": 0.2887
+      },
+      "organisation_loss": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 1,
+      "date": "1976-10-07",
+      "active_militia": {
+        "p10": 5164,
+        "p50": 7634,
+        "p90": 10015
+      },
+      "command": {
+        "p10": 0.899,
+        "p50": 0.9464,
+        "p90": 0.994
+      },
+      "communications": {
+        "p10": 0.7259,
+        "p50": 0.8087,
+        "p90": 0.8904
+      },
+      "supply": {
+        "p10": 0.6176,
+        "p50": 0.71,
+        "p90": 0.8015
+      },
+      "public_participation": {
+        "p10": 0.2407,
+        "p50": 0.3327,
+        "p90": 0.4262
+      },
+      "resistance_control": {
+        "p10": 0.2835,
+        "p50": 0.3325,
+        "p90": 0.381
+      },
+      "suppression_control": {
+        "p10": 0.199,
+        "p50": 0.2405,
+        "p90": 0.2823
+      },
+      "organisation_loss": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 2,
+      "date": "1976-10-08",
+      "active_militia": {
+        "p10": 6825,
+        "p50": 10837,
+        "p90": 14702
+      },
+      "command": {
+        "p10": 0.9209,
+        "p50": 0.9713,
+        "p90": 1.0
+      },
+      "communications": {
+        "p10": 0.7458,
+        "p50": 0.8345,
+        "p90": 0.9234
+      },
+      "supply": {
+        "p10": 0.6332,
+        "p50": 0.7275,
+        "p90": 0.8217
+      },
+      "public_participation": {
+        "p10": 0.2624,
+        "p50": 0.3574,
+        "p90": 0.4552
+      },
+      "resistance_control": {
+        "p10": 0.3557,
+        "p50": 0.4108,
+        "p90": 0.4664
+      },
+      "suppression_control": {
+        "p10": 0.1868,
+        "p50": 0.2313,
+        "p90": 0.2757
+      },
+      "organisation_loss": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 3,
+      "date": "1976-10-09",
+      "active_militia": {
+        "p10": 7844,
+        "p50": 12806,
+        "p90": 17593
+      },
+      "command": {
+        "p10": 0.9387,
+        "p50": 0.9926,
+        "p90": 1.0
+      },
+      "communications": {
+        "p10": 0.7616,
+        "p50": 0.8556,
+        "p90": 0.9509
+      },
+      "supply": {
+        "p10": 0.6437,
+        "p50": 0.7422,
+        "p90": 0.8399
+      },
+      "public_participation": {
+        "p10": 0.2862,
+        "p50": 0.3848,
+        "p90": 0.4854
+      },
+      "resistance_control": {
+        "p10": 0.4259,
+        "p50": 0.4905,
+        "p90": 0.5544
+      },
+      "suppression_control": {
+        "p10": 0.1747,
+        "p50": 0.2226,
+        "p90": 0.2704
+      },
+      "organisation_loss": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 4,
+      "date": "1976-10-10",
+      "active_militia": {
+        "p10": 8425,
+        "p50": 13937,
+        "p90": 19268
+      },
+      "command": {
+        "p10": 0.95,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "communications": {
+        "p10": 0.7679,
+        "p50": 0.8672,
+        "p90": 0.9672
+      },
+      "supply": {
+        "p10": 0.6485,
+        "p50": 0.7502,
+        "p90": 0.851
+      },
+      "public_participation": {
+        "p10": 0.3094,
+        "p50": 0.4129,
+        "p90": 0.5186
+      },
+      "resistance_control": {
+        "p10": 0.4871,
+        "p50": 0.5642,
+        "p90": 0.639
+      },
+      "suppression_control": {
+        "p10": 0.1666,
+        "p50": 0.2182,
+        "p90": 0.2695
+      },
+      "organisation_loss": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0008
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 5,
+      "date": "1976-10-11",
+      "active_militia": {
+        "p10": 8660,
+        "p50": 14445,
+        "p90": 20046
+      },
+      "command": {
+        "p10": 0.9489,
+        "p50": 0.9948,
+        "p90": 1.0
+      },
+      "communications": {
+        "p10": 0.759,
+        "p50": 0.8636,
+        "p90": 0.9676
+      },
+      "supply": {
+        "p10": 0.6426,
+        "p50": 0.747,
+        "p90": 0.851
+      },
+      "public_participation": {
+        "p10": 0.3305,
+        "p50": 0.4395,
+        "p90": 0.5502
+      },
+      "resistance_control": {
+        "p10": 0.5333,
+        "p50": 0.624,
+        "p90": 0.7125
+      },
+      "suppression_control": {
+        "p10": 0.1688,
+        "p50": 0.2226,
+        "p90": 0.2776
+      },
+      "organisation_loss": {
+        "p10": 0.0027,
+        "p50": 0.0054,
+        "p90": 0.0095
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 6,
+      "date": "1976-10-12",
+      "active_militia": {
+        "p10": 8586,
+        "p50": 14394,
+        "p90": 20066
+      },
+      "command": {
+        "p10": 0.93,
+        "p50": 0.9759,
+        "p90": 0.9985
+      },
+      "communications": {
+        "p10": 0.727,
+        "p50": 0.837,
+        "p90": 0.9439
+      },
+      "supply": {
+        "p10": 0.6185,
+        "p50": 0.7269,
+        "p90": 0.8336
+      },
+      "public_participation": {
+        "p10": 0.3492,
+        "p50": 0.4635,
+        "p90": 0.5796
+      },
+      "resistance_control": {
+        "p10": 0.5534,
+        "p50": 0.6614,
+        "p90": 0.7657
+      },
+      "suppression_control": {
+        "p10": 0.1835,
+        "p50": 0.2417,
+        "p90": 0.3015
+      },
+      "organisation_loss": {
+        "p10": 0.016,
+        "p50": 0.0221,
+        "p90": 0.0302
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 7,
+      "date": "1976-10-13",
+      "active_militia": {
+        "p10": 8182,
+        "p50": 13765,
+        "p90": 19243
+      },
+      "command": {
+        "p10": 0.8894,
+        "p50": 0.9398,
+        "p90": 0.9699
+      },
+      "communications": {
+        "p10": 0.6677,
+        "p50": 0.7824,
+        "p90": 0.8944
+      },
+      "supply": {
+        "p10": 0.5725,
+        "p50": 0.6844,
+        "p90": 0.7955
+      },
+      "public_participation": {
+        "p10": 0.3587,
+        "p50": 0.4782,
+        "p90": 0.6021
+      },
+      "resistance_control": {
+        "p10": 0.5446,
+        "p50": 0.6679,
+        "p90": 0.788
+      },
+      "suppression_control": {
+        "p10": 0.2174,
+        "p50": 0.2805,
+        "p90": 0.3458
+      },
+      "organisation_loss": {
+        "p10": 0.0431,
+        "p50": 0.0534,
+        "p90": 0.0665
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 8,
+      "date": "1976-10-14",
+      "active_militia": {
+        "p10": 7409,
+        "p50": 12508,
+        "p90": 17593
+      },
+      "command": {
+        "p10": 0.8262,
+        "p50": 0.882,
+        "p90": 0.9212
+      },
+      "communications": {
+        "p10": 0.5782,
+        "p50": 0.7008,
+        "p90": 0.8162
+      },
+      "supply": {
+        "p10": 0.5063,
+        "p50": 0.6205,
+        "p90": 0.7343
+      },
+      "public_participation": {
+        "p10": 0.3563,
+        "p50": 0.4834,
+        "p90": 0.6138
+      },
+      "resistance_control": {
+        "p10": 0.4993,
+        "p50": 0.6411,
+        "p90": 0.7767
+      },
+      "suppression_control": {
+        "p10": 0.2727,
+        "p50": 0.3415,
+        "p90": 0.413
+      },
+      "organisation_loss": {
+        "p10": 0.0852,
+        "p50": 0.1011,
+        "p90": 0.1202
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 9,
+      "date": "1976-10-15",
+      "active_militia": {
+        "p10": 6268,
+        "p50": 10705,
+        "p90": 15239
+      },
+      "command": {
+        "p10": 0.739,
+        "p50": 0.8044,
+        "p90": 0.8536
+      },
+      "communications": {
+        "p10": 0.4621,
+        "p50": 0.5926,
+        "p90": 0.7128
+      },
+      "supply": {
+        "p10": 0.4171,
+        "p50": 0.5368,
+        "p90": 0.6558
+      },
+      "public_participation": {
+        "p10": 0.3411,
+        "p50": 0.4736,
+        "p90": 0.6131
+      },
+      "resistance_control": {
+        "p10": 0.4197,
+        "p50": 0.5785,
+        "p90": 0.7325
+      },
+      "suppression_control": {
+        "p10": 0.3462,
+        "p50": 0.4243,
+        "p90": 0.5061
+      },
+      "organisation_loss": {
+        "p10": 0.1416,
+        "p50": 0.1644,
+        "p90": 0.1921
+      },
+      "collapsed_share": 0.0
+    },
+    {
+      "day": 10,
+      "date": "1976-10-16",
+      "active_militia": {
+        "p10": 4985,
+        "p50": 8626,
+        "p90": 12592
+      },
+      "command": {
+        "p10": 0.6197,
+        "p50": 0.7078,
+        "p90": 0.7705
+      },
+      "communications": {
+        "p10": 0.3238,
+        "p50": 0.4636,
+        "p90": 0.5932
+      },
+      "supply": {
+        "p10": 0.3104,
+        "p50": 0.4363,
+        "p90": 0.5599
+      },
+      "public_participation": {
+        "p10": 0.3092,
+        "p50": 0.4493,
+        "p90": 0.5977
+      },
+      "resistance_control": {
+        "p10": 0.3063,
+        "p50": 0.4858,
+        "p90": 0.6582
+      },
+      "suppression_control": {
+        "p10": 0.436,
+        "p50": 0.5261,
+        "p90": 0.6215
+      },
+      "organisation_loss": {
+        "p10": 0.21,
+        "p50": 0.2416,
+        "p90": 0.2808
+      },
+      "collapsed_share": 0.0003
+    },
+    {
+      "day": 11,
+      "date": "1976-10-17",
+      "active_militia": {
+        "p10": 3718,
+        "p50": 6604,
+        "p90": 10004
+      },
+      "command": {
+        "p10": 0.4552,
+        "p50": 0.5718,
+        "p90": 0.6711
+      },
+      "communications": {
+        "p10": 0.1668,
+        "p50": 0.3189,
+        "p90": 0.4597
+      },
+      "supply": {
+        "p10": 0.1904,
+        "p50": 0.3222,
+        "p90": 0.4529
+      },
+      "public_participation": {
+        "p10": 0.2596,
+        "p50": 0.4111,
+        "p90": 0.5688
+      },
+      "resistance_control": {
+        "p10": 0.1671,
+        "p50": 0.3692,
+        "p90": 0.562
+      },
+      "suppression_control": {
+        "p10": 0.5378,
+        "p50": 0.6429,
+        "p90": 0.7567
+      },
+      "organisation_loss": {
+        "p10": 0.2887,
+        "p50": 0.3318,
+        "p90": 0.3849
+      },
+      "collapsed_share": 0.0046
+    },
+    {
+      "day": 12,
+      "date": "1976-10-18",
+      "active_militia": {
+        "p10": 2627,
+        "p50": 4843,
+        "p90": 7677
+      },
+      "command": {
+        "p10": 0.267,
+        "p50": 0.4114,
+        "p90": 0.5343
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.1632,
+        "p90": 0.3154
+      },
+      "supply": {
+        "p10": 0.0565,
+        "p50": 0.1999,
+        "p90": 0.3387
+      },
+      "public_participation": {
+        "p10": 0.1956,
+        "p50": 0.3595,
+        "p90": 0.5292
+      },
+      "resistance_control": {
+        "p10": 0.005,
+        "p50": 0.2322,
+        "p90": 0.4471
+      },
+      "suppression_control": {
+        "p10": 0.6461,
+        "p50": 0.7697,
+        "p90": 0.906
+      },
+      "organisation_loss": {
+        "p10": 0.377,
+        "p50": 0.4332,
+        "p90": 0.5023
+      },
+      "collapsed_share": 0.0324
+    },
+    {
+      "day": 13,
+      "date": "1976-10-19",
+      "active_militia": {
+        "p10": 1090,
+        "p50": 3384,
+        "p90": 5712
+      },
+      "command": {
+        "p10": 0.0446,
+        "p50": 0.2421,
+        "p90": 0.382
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.1641
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0707,
+        "p90": 0.2176
+      },
+      "public_participation": {
+        "p10": 0.1156,
+        "p50": 0.2954,
+        "p90": 0.4769
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0781,
+        "p90": 0.3176
+      },
+      "suppression_control": {
+        "p10": 0.7632,
+        "p50": 0.9058,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 0.4741,
+        "p50": 0.545,
+        "p90": 0.6296
+      },
+      "collapsed_share": 0.2084
+    },
+    {
+      "day": 14,
+      "date": "1976-10-20",
+      "active_militia": {
+        "p10": 484,
+        "p50": 1559,
+        "p90": 4081
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0388,
+        "p90": 0.227
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0053
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0949
+      },
+      "public_participation": {
+        "p10": 0.0269,
+        "p50": 0.2204,
+        "p90": 0.4161
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.1739
+      },
+      "suppression_control": {
+        "p10": 0.887,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 0.5795,
+        "p50": 0.6644,
+        "p90": 0.7616
+      },
+      "collapsed_share": 0.6783
+    },
+    {
+      "day": 15,
+      "date": "1976-10-21",
+      "active_militia": {
+        "p10": 256,
+        "p50": 738,
+        "p90": 1897
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0378
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.1375,
+        "p90": 0.345
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0203
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 0.6922,
+        "p50": 0.7865,
+        "p90": 0.8939
+      },
+      "collapsed_share": 0.9542
+    },
+    {
+      "day": 16,
+      "date": "1976-10-22",
+      "active_militia": {
+        "p10": 171,
+        "p50": 424,
+        "p90": 949
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.0479,
+        "p90": 0.2694
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 0.8064,
+        "p50": 0.9088,
+        "p90": 1.0
+      },
+      "collapsed_share": 0.9966
+    },
+    {
+      "day": 17,
+      "date": "1976-10-23",
+      "active_militia": {
+        "p10": 140,
+        "p50": 300,
+        "p90": 593
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.1876
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 0.9209,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "collapsed_share": 0.9992
+    },
+    {
+      "day": 18,
+      "date": "1976-10-24",
+      "active_militia": {
+        "p10": 127,
+        "p50": 253,
+        "p90": 454
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.1037
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "collapsed_share": 0.9999
+    },
+    {
+      "day": 19,
+      "date": "1976-10-25",
+      "active_militia": {
+        "p10": 122,
+        "p50": 234,
+        "p90": 398
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0178
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "collapsed_share": 1.0
+    },
+    {
+      "day": 20,
+      "date": "1976-10-26",
+      "active_militia": {
+        "p10": 120,
+        "p50": 227,
+        "p90": 374
+      },
+      "command": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "communications": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "supply": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "public_participation": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "resistance_control": {
+        "p10": 0.0,
+        "p50": 0.0,
+        "p90": 0.0
+      },
+      "suppression_control": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "organisation_loss": {
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0
+      },
+      "collapsed_share": 1.0
+    }
+  ],
+  "nodes": [
+    {
+      "id": "hongqiao",
+      "label": "虹桥机场",
+      "x": 0.12,
+      "y": 0.58,
+      "initial": "suppression",
+      "fall_day": 0
+    },
+    {
+      "id": "garrison",
+      "label": "上海警备区",
+      "x": 0.39,
+      "y": 0.45,
+      "initial": "contested",
+      "fall_day": 10
+    },
+    {
+      "id": "communications",
+      "label": "广播与通信",
+      "x": 0.47,
+      "y": 0.35,
+      "initial": "resistance",
+      "fall_day": 11
+    },
+    {
+      "id": "kangping",
+      "label": "康平路",
+      "x": 0.32,
+      "y": 0.59,
+      "initial": "resistance",
+      "fall_day": 13
+    },
+    {
+      "id": "militia_hq",
+      "label": "民兵指挥部",
+      "x": 0.57,
+      "y": 0.3,
+      "initial": "resistance",
+      "fall_day": 14
+    },
+    {
+      "id": "huangpu",
+      "label": "黄浦工业区",
+      "x": 0.54,
+      "y": 0.56,
+      "initial": "resistance",
+      "fall_day": 15
+    },
+    {
+      "id": "naval_base",
+      "label": "海军上海基地",
+      "x": 0.62,
+      "y": 0.2,
+      "initial": "suppression",
+      "fall_day": 0
+    },
+    {
+      "id": "yangpu",
+      "label": "杨浦工业区",
+      "x": 0.74,
+      "y": 0.27,
+      "initial": "resistance",
+      "fall_day": 17
+    },
+    {
+      "id": "jiangnan",
+      "label": "江南造船厂",
+      "x": 0.59,
+      "y": 0.75,
+      "initial": "resistance",
+      "fall_day": 18
+    },
+    {
+      "id": "textile",
+      "label": "中纺机",
+      "x": 0.78,
+      "y": 0.42,
+      "initial": "resistance",
+      "fall_day": 19
+    }
+  ],
+  "milestones": [
+    {
+      "day": 0,
+      "title": "抵沪",
+      "detail": "张春桥成功离京抵沪，上海领导层进入紧急动员。"
+    },
+    {
+      "day": 1,
+      "title": "市级动员",
+      "detail": "民兵系统从待命转为公开集结，工业节点建立联络。"
+    },
+    {
+      "day": 3,
+      "title": "控制扩张",
+      "detail": "抵抗方争夺广播、交通与区级组织网络。"
+    },
+    {
+      "day": 6,
+      "title": "外围封锁",
+      "detail": "铁路、机场与沿江通道受压，补给开始失衡。"
+    },
+    {
+      "day": 9,
+      "title": "弹压军合围",
+      "detail": "六十军方向与海军基地形成外压，城市指挥链被切割。"
+    },
+    {
+      "day": 12,
+      "title": "通信断裂",
+      "detail": "全市协调退化为局部自治，节点逐一失去联系。"
+    },
+    {
+      "day": 15,
+      "title": "中心失守",
+      "detail": "指挥部与黄浦节点失守，抵抗转入分散据点。"
+    },
+    {
+      "day": 18,
+      "title": "最后据点",
+      "detail": "江南与杨浦方向的残余组织被压缩。"
+    },
+    {
+      "day": 20,
+      "title": "公社式结局",
+      "detail": "有组织抵抗归零；领导层结局进入竞争风险分支。"
+    }
+  ]
+}
