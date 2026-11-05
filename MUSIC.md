@@ -38,6 +38,7 @@ Create the isolated environment once:
 python -m venv --system-site-packages .venv-audio
 .\.venv-audio\Scripts\python.exe -m pip install torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 .\.venv-audio\Scripts\python.exe -m pip install demucs noisereduce
+.\.venv-audio\Scripts\python.exe -m pip install gradio_client
 ~~~
 
 Run the complete experiment:
@@ -48,7 +49,14 @@ npm run music:restore
 
 The default output is `../historical_models/shanghai-1976-video/output/music/restoration-2026-11-05`. Review `blind-review/candidate-*.mp4` before opening the branch mapping in `restoration-report.json`. Automatic PASS checks duration, sample rate, silence, clipping, loudness, true peak, photograph restraint, crisis growth, and ending pressure. It does not decide whether an estimated vocal stem is a real artifact or legitimate orchestration.
 
-SonicMaster remains a separate A4 experiment because its official environment requires Python 3.13 and its generative output needs human review before combination with deterministic processing.
+SonicMaster remains a separate A4 experiment because its generative output needs human review before combination with deterministic processing. The official public Space can be called without an API key:
+
+~~~powershell
+npm run music:restore:sonicmaster -- <input.wav> <output-directory>\candidates\A4-sonicmaster-raw.wav
+npm run music:restore
+~~~
+
+The official Space currently returns a padded full-song result for this 60-second input. The restoration pipeline preserves that raw response, then resamples and trims the A4 review candidate to the exact source duration before validation.
 
 ## Optional Eleven Music route
 

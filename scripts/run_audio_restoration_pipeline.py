@@ -283,6 +283,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=sibling / "music" / "restoration-2026-11-05")
     parser.add_argument("--device", choices=("cuda", "cpu"), default="cuda")
     parser.add_argument("--skip-demucs", action="store_true")
+    parser.add_argument("--sonicmaster-input", type=Path)
     return parser.parse_args()
 
 
@@ -363,6 +364,31 @@ def main() -> int:
         a5_pre.unlink(missing_ok=True)
         a5_raw.unlink(missing_ok=True)
 
+    sonicmaster_source = args.sonicmaster_input
+    if sonicmaster_source is None:
+        default_sonicmaster = candidates_dir / "A4-sonicmaster-raw.wav"
+        sonicmaster_source = default_sonicmaster if default_sonicmaster.exists() else None
+    sonicmaster_status: dict[str, object]
+    if sonicmaster_source is not None and sonicmaster_source.exists():
+        a4_raw, a4_rate = read_audio(sonicmaster_source)
+        raw_duration = len(a4_raw) / a4_rate
+        a4_audio = align_audio(a4_raw, a4_rate, sample_rate, len(audio))
+        a4_audio, _ = constant_gain_match(a4_audio, audio)
+        a4 = candidates_dir / "A4-sonicmaster-conformed.wav"
+        write_audio(a4, a4_audio, sample_rate)
+        candidates.append(Candidate("A4", a4, "Official SonicMaster Space output conformed to 60 seconds and 48 kHz"))
+        sonicmaster_status = {
+            "status": "completed",
+            "source": str(sonicmaster_source),
+            "raw_duration_seconds": round(raw_duration, 6),
+            "conformance": "Resampled to 48 kHz, trimmed to source length, and constant-gain matched",
+        }
+    else:
+        sonicmaster_status = {
+            "status": "not_run",
+            "reason": "Provide --sonicmaster-input or generate candidates/A4-sonicmaster-raw.wav with the official public Space.",
+        }
+
     source_metrics = basic_metrics(audio, sample_rate)
     report_candidates: list[dict[str, object]] = []
     for candidate in candidates:
@@ -413,7 +439,7 @@ def main() -> int:
         "pipeline": {
             "A0": "reference only", "A1": "light spectral gate with noise-only residual", "A2": demucs_status,
             "A3": "28 Hz cleanup and 120-250 Hz dynamic EQ capped at 2 dB",
-            "A4": {"status": "not_run", "reason": "Official SonicMaster uses a separate Python 3.13 model environment; review deterministic branches first."},
+            "A4": sonicmaster_status,
             "A5": "generated only when A2 completes; minimal A1+A2+A3 combination",
         },
         "candidates": report_candidates,

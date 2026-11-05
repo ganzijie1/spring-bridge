@@ -18,6 +18,7 @@
     "music:generate": "python scripts/run_music_pipeline.py",
     "music:generate:ace": "uv run --project ../../ai-tools/ACE-Step-1.5 python scripts/generate_music_acestep.py",
     "music:restore": ".venv-audio\\Scripts\\python.exe scripts/run_audio_restoration_pipeline.py",
+    "music:restore:sonicmaster": ".venv-audio\\Scripts\\python.exe scripts/run_sonicmaster_space.py",
     "music:score:context": "python scripts/score_context_music.py output/music/candidates-storm-conformed/*.flac",
     "music:conform": "python scripts/conform_music_timeline.py output/music/candidates/ace-v15-candidate-02.flac",
     "music:master": "python scripts/master_and_mux.py output/music/shanghai-1976-score-conformed.flac",
