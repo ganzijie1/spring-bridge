@@ -28,6 +28,28 @@ The current selected source is candidate 02. Its conformed timeline score is `0.
 
 The final video is written to `output/shanghai-1976-force-map-with-zhang-music.mp4`. A human listening pass should still reject any unintended voice-like texture, triumphal affect, or musically abrupt ending.
 
+## Generated-music artifact restoration
+
+The restoration experiment follows the Feishu research plan and never overwrites the source master. It generates A0/A1/A2/A3/A5 branches, residual audio, per-segment diagnostics, hashes, and anonymized full-video review files.
+
+Create the isolated environment once:
+
+~~~powershell
+python -m venv --system-site-packages .venv-audio
+.\.venv-audio\Scripts\python.exe -m pip install torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+.\.venv-audio\Scripts\python.exe -m pip install demucs noisereduce
+~~~
+
+Run the complete experiment:
+
+~~~powershell
+npm run music:restore
+~~~
+
+The default output is `../historical_models/shanghai-1976-video/output/music/restoration-2026-11-05`. Review `blind-review/candidate-*.mp4` before opening the branch mapping in `restoration-report.json`. Automatic PASS checks duration, sample rate, silence, clipping, loudness, true peak, photograph restraint, crisis growth, and ending pressure. It does not decide whether an estimated vocal stem is a real artifact or legitimate orchestration.
+
+SonicMaster remains a separate A4 experiment because its official environment requires Python 3.13 and its generative output needs human review before combination with deterministic processing.
+
 ## Optional Eleven Music route
 
 The earlier paid route remains available as a fallback. The six chunks in `music-plan.json` total exactly 60,000 ms and align with the same edit points.
