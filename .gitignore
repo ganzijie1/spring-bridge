@@ -1,0 +1,17 @@
+node_modules/
+output/
+.cache/
+.venv/
+.venv-*/
+*.log
+*.wav
+*.flac
+*.aac
+output/*.mp4
+output/music/
+output/music-pipeline-test/
+output/pipeline-test-*
+output/keyframes/video-*.png
+output/generative/tasks.json
+__pycache__/
+*.pyc

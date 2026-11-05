@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "title": "1976年10月上海敌我形势",
+    "subtitle": "兵力、武器与指挥节点的史料分层重建",
+    "scope": "1976-10-06/1976-10-26",
+    "terminology_note": "“民兵武装/走资派弹压军/中南海政变”为本项目采用的叙事标签；史实断言仍按来源等级标注。",
+    "coordinate_note": "历史地址按现址或旧址近似定位，只用于态势示意，不代表建筑边界。"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "tier": "A",
+      "label": "徐景贤1976-10-08批注影印",
+      "note": "《上海民兵斗争史资料》1980年第19期影印件被后续著作转引",
+      "url": "https://s3.us-west-1.wasabisys.com/p-library/books/f9085d1561d5f4163537b8591d348781.pdf"
+    },
+    {
+      "id": "S2",
+      "tier": "B",
+      "label": "李逊：上海市民兵指挥部",
+      "note": "据档案与口述研究；确认1976年5月指挥部迁回黄浦路20号",
+      "url": "https://2newcenturynet.blogspot.com/2014/03/blog-post_5607.html"
+    },
+    {
+      "id": "S3",
+      "tier": "C",
+      "label": "事后官方清查/审判材料",
+      "note": "包含指控性语言，数字作为官方口径展示，不能自动视为中性事实",
+      "url": "https://www.rmrb.zhouenlai.info/人民日报（1946-2003）/1980/11/1980-11-21.htm"
+    },
+    {
+      "id": "S4",
+      "tier": "C",
+      "label": "《供批判四人帮参考》材料",
+      "note": "提供区级武器与弹药发放数字；政治用途明确，需与其他材料互证",
+      "url": "https://raw.githubusercontent.com/banned-historical-archives/banned-historical-archives11/main/data/1646/1646.pdf"
+    },
+    {
+      "id": "S5",
+      "tier": "C",
+      "label": "后出官方叙事",
+      "note": "用于中央工作组行动节点；个别数字与原始批注不一致时不采用",
+      "url": "https://www.people.com.cn/24hour/n/2014/0121/c25408-24176924.html"
+    },
+    {
+      "id": "S6",
+      "tier": "B",
+      "label": "回忆与研究材料",
+      "note": "提出江南造船厂、中纺机更接近联络点而非完整指挥所",
+      "url": "https://raw.githubusercontent.com/banned-historical-archives/banned-historical-archives3/main/a6c01981-a674-416b-ab3b-2fc3f84c1058.pdf"
+    }
+  ],
+  "aggregate_forces": [
+    {
+      "id": "concentrated",
+      "side": "militia",
+      "label": "集中",
+      "count": 2500,
+      "unit": "人",
+      "date": "1976-10-08",
+      "source_ids": ["S1"],
+      "allocation": "全市合计，未见可靠逐点拆分"
+    },
+    {
+      "id": "standby",
+      "side": "militia",
+      "label": "待命",
+      "count": 31000,
+      "unit": "人",
+      "date": "1976-10-08",
+      "source_ids": ["S1"],
+      "allocation": "全市合计，未见可靠逐区拆分"
+    },
+    {
+      "id": "weapons_official",
+      "side": "militia",
+      "label": "调集武器",
+      "count": 27000,
+      "unit": "件/支（原材料口径）",
+      "date": "1976-10",
+      "source_ids": ["S3"],
+      "allocation": "事后官方总数，不能等同于各节点实到数"
+    },
+    {
+      "id": "vehicles_official",
+      "side": "militia",
+      "label": "车辆",
+      "count": 225,
+      "unit": "辆",
+      "date": "1976-10",
+      "source_ids": ["S3"],
+      "allocation": "事后官方总数，未见可靠逐点拆分"
+    },
+    {
+      "id": "radios_official",
+      "side": "militia",
+      "label": "电台",
+      "count": 15,
+      "unit": "部",
+      "date": "1976-10-09",
+      "source_ids": ["S3"],
+      "allocation": "事后官方口径"
+    }
+  ],
+  "locations": [
+    {
+      "id": "militia_hq",
+      "name": "上海市民兵指挥部",
+      "short": "民兵指挥部",
+      "address": "黄浦路20号",
+      "lon": 121.4972,
+      "lat": 31.2466,
+      "side": "militia",
+      "kind": "command",
+      "source_ids": ["S2"],
+      "detail": "1976年5月迁回此处；市级集中/待命人数不按此点计算"
+    },
+    {
+      "id": "jiangnan",
+      "name": "江南造船厂旧址",
+      "short": "江南造船厂",
+      "address": "高雄路2号一带",
+      "lon": 121.4948,
+      "lat": 31.1988,
+      "side": "militia",
+      "kind": "disputed_command",
+      "source_ids": ["S3", "S6"],
+      "detail": "事后官方称秘密指挥点；另有研究称更接近联络点"
+    },
+    {
+      "id": "textile",
+      "name": "中国纺织机械厂",
+      "short": "中纺机",
+      "address": "长阳路1687号",
+      "lon": 121.5485,
+      "lat": 31.2745,
+      "side": "militia",
+      "kind": "disputed_command",
+      "source_ids": ["S3", "S6"],
+      "detail": "事后官方称秘密指挥点；另有研究称更接近联络点"
+    },
+    {
+      "id": "kangping",
+      "name": "康平路机关大院",
+      "short": "康平路",
+      "address": "康平路165号一带",
+      "lon": 121.4427,
+      "lat": 31.2053,
+      "side": "militia",
+      "kind": "political",
+      "source_ids": ["S5"],
+      "detail": "上海市委活动节点"
+    },
+    {
+      "id": "dingxiang",
+      "name": "丁香花园",
+      "short": "一号点",
+      "address": "华山路849号",
+      "lon": 121.4388,
+      "lat": 31.2153,
+      "side": "militia",
+      "kind": "political",
+      "source_ids": ["S5"],
+      "detail": "后出叙事所称联络节点"
+    },
+    {
+      "id": "donghu",
+      "name": "东湖宾馆",
+      "short": "二号点",
+      "address": "东湖路7号",
+      "lon": 121.4526,
+      "lat": 31.219,
+      "side": "militia",
+      "kind": "political",
+      "source_ids": ["S5"],
+      "detail": "后出叙事所称联络节点"
+    },
+    {
+      "id": "huangpu_district",
+      "name": "黄浦区民兵系统",
+      "short": "黄浦区",
+      "address": "区级汇总点（示意）",
+      "lon": 121.489,
+      "lat": 31.231,
+      "side": "militia",
+      "kind": "distribution",
+      "source_ids": ["S4"],
+      "detail": "10月8-13日材料：枪60支、子弹7,500发",
+      "weapons": 60,
+      "rounds": 7500
+    },
+    {
+      "id": "changning_district",
+      "name": "长宁区民兵系统",
+      "short": "长宁区",
+      "address": "区级汇总点（示意）",
+      "lon": 121.418,
+      "lat": 31.218,
+      "side": "militia",
+      "kind": "distribution",
+      "source_ids": ["S4"],
+      "detail": "10月8-13日材料：枪20支、子弹4,500发",
+      "weapons": 20,
+      "rounds": 4500
+    },
+    {
+      "id": "yangpu_district",
+      "name": "杨浦区民兵系统",
+      "short": "杨浦区",
+      "address": "区级汇总点（示意）",
+      "lon": 121.529,
+      "lat": 31.263,
+      "side": "militia",
+      "kind": "distribution",
+      "source_ids": ["S4"],
+      "detail": "10月8-13日材料：枪50支、子弹5,760发",
+      "weapons": 50,
+      "rounds": 5760
+    },
+    {
+      "id": "naval_base",
+      "name": "海军上海基地",
+      "short": "水电路海军基地",
+      "address": "水电路一带（示意）",
+      "lon": 121.483,
+      "lat": 31.286,
+      "side": "suppression",
+      "kind": "command",
+      "source_ids": ["S5"],
+      "detail": "10月20日起中央工作组临时指挥节点；兵力未见可靠分项"
+    },
+    {
+      "id": "garrison",
+      "name": "上海警备区",
+      "short": "上海警备区",
+      "address": "市内节点（位置示意）",
+      "lon": 121.466,
+      "lat": 31.239,
+      "side": "suppression",
+      "kind": "force",
+      "source_ids": ["S5"],
+      "detail": "与中央工作组联络；公开材料未见可靠分项兵力"
+    }
+  ],
+  "regional_forces": [
+    {
+      "id": "army60",
+      "name": "陆军第60军",
+      "label": "走资派弹压军",
+      "area": "无锡—苏州—上海方向",
+      "from": [120.31, 31.49],
+      "via": [120.59, 31.3],
+      "to": [121.47, 31.23],
+      "count": null,
+      "count_note": "公开材料未见可复核分项兵力",
+      "route_status": "战略方向示意，不冒充逐日行军路线",
+      "source_ids": ["S5"]
+    },
+    {
+      "id": "east_sea_fleet",
+      "name": "东海舰队/海军上海基地",
+      "label": "走资派弹压军",
+      "area": "上海沿江沿海与水电路基地",
+      "from": [121.55, 29.87],
+      "to": [121.483, 31.286],
+      "count": null,
+      "count_note": "公开材料未见可复核分项兵力",
+      "route_status": "指挥与控制关系示意",
+      "source_ids": ["S5"]
+    }
+  ],
+  "timeline": [
+    {
+      "date": "10月6日",
+      "title": "中南海政变",
+      "detail": "“四人帮”在北京被捕；此处采用项目叙事标签",
+      "source_ids": ["S5"]
+    },
+    {
+      "date": "10月8日",
+      "title": "集中与待命",
+      "detail": "批注记载：2,500人集中，31,000人待命",
+      "source_ids": ["S1"]
+    },
+    {
+      "date": "10月9-13日",
+      "title": "武器与联络节点",
+      "detail": "区级发放数据可见，但人员没有可靠逐点拆分",
+      "source_ids": ["S3", "S4", "S6"]
+    },
+    {
+      "date": "10月20日",
+      "title": "中央工作组抵沪",
+      "detail": "苏振华、倪志福、彭冲等由虹桥机场进入水电路海军基地",
+      "source_ids": ["S5"]
+    },
+    {
+      "date": "10月26日",
+      "title": "权力接管公开化",
+      "detail": "上海新领导班子公开出现",
+      "source_ids": ["S5"]
+    }
+  ],
+  "instruction": {
+    "heading": "训令",
+    "quote": "准备接受严重考验",
+    "attribution": "后出材料称由张春桥传达",
+    "caveat": "未见可独立核验的原始手令；按转述展示，不作原件断言",
+    "source_ids": ["S5"]
+  }
+}

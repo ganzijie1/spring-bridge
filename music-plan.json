@@ -1,0 +1,138 @@
+{
+  "model_id": "music_v2_5",
+  "output_format": "mp3_48000_192",
+  "duration_ms": 60000,
+  "candidate_seeds": [19761006, 19761007, 19761008, 19761009],
+  "composition_plan": {
+    "chunks": [
+      {
+        "text": "[Cold Open]",
+        "duration_ms": 6000,
+        "positive_styles": [
+          "instrumental cinematic historical score",
+          "tragic resolute and restrained",
+          "dark low strings and solo cello",
+          "sparse orchestration",
+          "slow tempo around 64 BPM",
+          "D minor with unresolved harmony",
+          "clean high quality film mix"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "chanting",
+          "spoken words",
+          "triumphant",
+          "heroic fanfare",
+          "pop song",
+          "electronic dance beat",
+          "trailer braams"
+        ],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Controlled Build]",
+        "duration_ms": 12000,
+        "positive_styles": [
+          "low cello pulse",
+          "restrained low brass",
+          "very sparse frame drum",
+          "gradual pressure",
+          "somber historical gravity"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "anthem",
+          "triumphant",
+          "bright major key",
+          "heavy percussion"
+        ],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Exposed Photograph Passage]",
+        "duration_ms": 9000,
+        "positive_styles": [
+          "thin exposed orchestration",
+          "solo cello or low bowed timbre",
+          "minimal percussion",
+          "mournful without sentimentality",
+          "leave emotional and visual space"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "drum hits",
+          "crescendo",
+          "heroic melody",
+          "lush romantic strings"
+        ],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Pressure Returns]",
+        "duration_ms": 13000,
+        "positive_styles": [
+          "low drum pulse returns gradually",
+          "rising string tension",
+          "controlled dissonance",
+          "restrained low brass",
+          "steadily increasing pressure"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "victory march",
+          "bright",
+          "dance rhythm",
+          "abrupt transition"
+        ],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Historical Climax]",
+        "duration_ms": 12000,
+        "positive_styles": [
+          "strongest dramatic peak",
+          "heavy controlled low brass",
+          "rising strings",
+          "limited distant military percussion",
+          "tragic and forceful",
+          "unresolved tension"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "triumphant",
+          "heroic victory cadence",
+          "major key resolution",
+          "trailer impact",
+          "overwhelming drums"
+        ],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Unresolved Aftermath]",
+        "duration_ms": 8000,
+        "positive_styles": [
+          "percussion recedes completely",
+          "low strings remain",
+          "suspended final harmony",
+          "clean cinematic ending at the final second",
+          "unresolved historical aftermath"
+        ],
+        "negative_styles": [
+          "vocals",
+          "choir",
+          "triumphant resolution",
+          "major chord ending",
+          "early fade out",
+          "abrupt cutoff",
+          "building intensity"
+        ],
+        "context_adherence": "high"
+      }
+    ]
+  }
+}

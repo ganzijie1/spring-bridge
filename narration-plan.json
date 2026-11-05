@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "duration_seconds": 60.0,
+    "language": "zh",
+    "speaker": "uncle_fu",
+    "runtime": "speech.cpp 0.10.1 (Vulkan)",
+    "model": "Qwen3-TTS-12Hz-1.7B-CustomVoice-Q8_0",
+    "strategy": "context-plan-clean-tts-separate-stems",
+    "photo_silence": [21.5, 25.5]
+  },
+  "global_context": "1976年10月上海历史态势地图。叙述应克制、沉重、清晰，像严肃纪录片；不喊口号，不表演凯旋，不替史料补写未知数字。",
+  "segments": [
+    {
+      "id": "opening",
+      "start": 0.6,
+      "end": 8.0,
+      "text": "一九七六年十月，上海。中南海政变之后，局势骤然收紧。",
+      "context_before": "片头从纸质档案底纹进入上海地图。",
+      "context_after": "地图出现训令与民兵节点。",
+      "instruction": "低沉、克制、缓慢开场。上海之后短暂停顿；最后一句不升调。",
+      "arousal": 0.32,
+      "valence": -0.62
+    },
+    {
+      "id": "instruction",
+      "start": 8.2,
+      "end": 13.6,
+      "text": "后出材料转述，张春桥传达：准备接受严重考验。",
+      "context_before": "画面右上显示训令，并注明原始手令未见。",
+      "context_after": "随后进入十月八日的人员数字。",
+      "instruction": "严肃陈述。强调后出材料转述；引语坚定但不喊叫。",
+      "arousal": 0.46,
+      "valence": -0.7
+    },
+    {
+      "id": "force_count",
+      "start": 14.0,
+      "end": 20.8,
+      "text": "十月八日的批注记载：两千五百人集中，三万一千人待命。",
+      "context_before": "训令消退，地图展示全市汇总数字。",
+      "context_after": "二十一点五秒起出现张春桥受审照片，旁白留白。",
+      "instruction": "数字逐项读清，语速略慢；待命之后完整收句。",
+      "arousal": 0.48,
+      "valence": -0.66
+    },
+    {
+      "id": "official_ledger",
+      "start": 26.0,
+      "end": 34.8,
+      "text": "事后官方清查称，两万七千件支武器、二百二十五辆车、十五部电台；这是指控口径，不是中性统计。",
+      "context_before": "人物照片淡出，事后官方清查口径与区级武器数据出现。",
+      "context_after": "画面转向江南造船厂和中纺机的争议性质。",
+      "instruction": "冷静、审慎。前三组数字清楚分隔；最后一句降低音高，突出证据限定。",
+      "arousal": 0.52,
+      "valence": -0.64
+    },
+    {
+      "id": "disputed_nodes",
+      "start": 35.2,
+      "end": 43.0,
+      "text": "江南造船厂和中纺机，官方称秘密指挥点；另有研究认为，更接近联络点。",
+      "context_before": "两处节点由红色虚线连接，画面同时列出两种解释。",
+      "context_after": "外围军事压力图即将出现。",
+      "instruction": "两种判断保持同等克制，不替观众裁决；分号处明显停顿。",
+      "arousal": 0.5,
+      "valence": -0.6
+    },
+    {
+      "id": "suppression",
+      "start": 43.2,
+      "end": 54.1,
+      "text": "十月二十日，中央工作组抵沪。第六十军、东海舰队和警备区形成外围压力；各部队人数，没有可靠分项。",
+      "context_before": "区域插图显示无锡、苏州、宁波至上海的方向关系。",
+      "context_after": "地图进入最后的接管阶段。",
+      "instruction": "张力提高但保持纪录片语气。三个机构逐一读清；最后一句放慢并压低。",
+      "arousal": 0.66,
+      "valence": -0.72
+    },
+    {
+      "id": "evidence_boundary",
+      "start": 54.2,
+      "end": 59.3,
+      "text": "这张图标明证据边界：已知者写明，未知者不补。",
+      "context_before": "接管路线完成，画面仍保留来源标签与未知人数说明。",
+      "context_after": "视频结束，音乐保留短暂余波。",
+      "instruction": "放慢、克制收束。已知者写明与未知者不补之间停顿，结尾不拖长。",
+      "arousal": 0.36,
+      "valence": -0.58
+    }
+  ]
+}
