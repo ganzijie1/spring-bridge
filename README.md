@@ -29,7 +29,7 @@ npm run render
 
 
 
-该命令在 21.5–25.5 秒将张春桥受审历史照片淡入地图左上空白区域，不改变总时长，也不覆盖右侧时间线和主要态势标记。输出为 `output/shanghai-1976-force-map-with-zhang.mp4`；来源与编辑口径记录在 `public/assets/zhang-trial-source.json`。
+输出为 `output/shanghai-1976-force-map-with-zhang.mp4`；来源与编辑口径记录在 `public/assets/zhang-trial-source.json`。
 
 ## Runway + Kling 4.0 混合版
 
