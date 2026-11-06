@@ -39,11 +39,13 @@ const currentMilestone = (day: number) => {
   return current;
 };
 
-const nodeState = (node: (typeof simulation.nodes)[number], day: number) => {
-  if (node.initial === 'suppression') return 'suppression';
-  if (day >= node.fall_day) return 'suppression';
-  if (day >= node.fall_day - 1.2 || node.initial === 'contested') return 'contested';
-  return 'resistance';
+const nodeSnapshot = (node: (typeof simulation.nodes)[number], day: number) => {
+  const left = Math.min(node.history.length - 1, Math.max(0, Math.floor(day)));
+  const right = Math.min(node.history.length - 1, left + 1);
+  const alpha = Math.max(0, Math.min(1, day - left));
+  const control = node.history[left].control * (1 - alpha) + node.history[right].control * alpha;
+  const state = control >= 0.58 ? 'resistance' : control <= 0.42 ? 'suppression' : 'contested';
+  return {control, state};
 };
 
 const colorFor = (state: string) =>
@@ -117,12 +119,35 @@ const CampaignMap: React.FC<{day: number; frame: number}> = ({day, frame}) => {
       />
       <text x="1120" y="675" fontSize="22" fill={C.suppression} fontWeight="900" opacity={riverProgress}>沿江封锁</text>
 
+      {simulation.edges.map((edge) => {
+        const from = simulation.nodes.find((node) => node.id === edge.from)!;
+        const to = simulation.nodes.find((node) => node.id === edge.to)!;
+        const fromSnapshot = nodeSnapshot(from, day);
+        const toSnapshot = nodeSnapshot(to, day);
+        const control = (fromSnapshot.control + toSnapshot.control) / 2;
+        const state = control >= 0.56 ? 'resistance' : control <= 0.44 ? 'suppression' : 'contested';
+        return (
+          <line
+            key={`${edge.from}-${edge.to}`}
+            x1={100 + from.x * 1120}
+            y1={50 + from.y * 650}
+            x2={100 + to.x * 1120}
+            y2={50 + to.y * 650}
+            stroke={colorFor(state)}
+            strokeWidth={2 + edge.capacity * 4}
+            strokeDasharray={state === 'contested' ? '9 7' : undefined}
+            opacity={0.24 + edge.capacity * 0.32}
+          />
+        );
+      })}
+
       {simulation.nodes.map((node) => {
-        const state = nodeState(node, day);
+        const snapshot = nodeSnapshot(node, day);
+        const state = snapshot.state;
         const color = colorFor(state);
         const x = 100 + node.x * 1120;
         const y = 50 + node.y * 650;
-        const isFalling = day >= node.fall_day - 1.2 && day < node.fall_day && node.fall_day > 0;
+        const isFalling = snapshot.control > 0.34 && snapshot.control < 0.60;
         return (
           <g key={node.id} transform={`translate(${x} ${y})`} filter="url(#shadow)">
             {isFalling && <circle r={30 * pulse} fill="none" stroke={C.contested} strokeWidth="5" opacity="0.65" />}
@@ -231,6 +256,9 @@ export const Shanghai1976Counterfactual: React.FC = () => {
       <div style={{position: 'absolute', right: 0, top: 0, width: 470, height: 1080, background: 'rgba(20,25,27,0.965)', color: C.white, padding: '42px 38px', boxSizing: 'border-box'}}>
         <div style={{fontSize: 17, color: '#aeb8b5'}}>CONDITIONAL SIMULATION</div>
         <div style={{fontSize: 34, fontWeight: 950, lineHeight: 1.2, marginTop: 10}}>战局状态</div>
+        <div style={{display: 'inline-block', marginTop: 12, padding: '6px 10px', border: `1px solid ${C.gold}`, color: C.gold, fontSize: 16, fontWeight: 900}}>
+          {state.dominant_regime}
+        </div>
         <div style={{borderTop: `1px solid #485154`, marginTop: 24, paddingTop: 22}}>
           <div style={{fontSize: 15, color: '#b9c2bf'}}>推演参与民兵 / P10—P90</div>
           <div style={{fontSize: 43, fontWeight: 950, color: C.gold, marginTop: 5}}>{formatNumber(state.active_militia.p50)}</div>
@@ -238,15 +266,18 @@ export const Shanghai1976Counterfactual: React.FC = () => {
         </div>
         <div style={{marginTop: 26}}>
           <StatBar label="指挥连续性" value={state.command.p50} color={C.resistance} />
-          <StatBar label="抵抗方节点控制" value={state.resistance_control.p50} color={C.resistance} />
-          <StatBar label="走资派弹压军控制" value={state.suppression_control.p50} color={C.suppressionSoft} />
-          <StatBar label="通信可用度" value={state.communications.p50} color={C.gold} />
+          <StatBar label="抵抗方节点控制" value={state.spatial.resistance_control} color={C.resistance} />
+          <StatBar label="走资派弹压军控制" value={state.spatial.suppression_control} color={C.suppressionSoft} />
+          <StatBar label="网络通信可用度" value={state.spatial.communications} color={C.gold} />
         </div>
         <div style={{marginTop: 26}}><TrendChart day={day} /></div>
         <div style={{marginTop: 28, borderTop: `1px solid #485154`, paddingTop: 18}}>
           <div style={{fontSize: 15, color: '#aeb8b5'}}>结构情景集</div>
           <div style={{fontSize: 25, fontWeight: 900, marginTop: 6}}>12,000 条固定种子路径</div>
-          <div style={{fontSize: 15, color: '#bac3c1', lineHeight: 1.5, marginTop: 10}}>中央指挥崩解：第 14—16 日<br />地方残余抵抗：延续至第 21 日</div>
+          <div style={{fontSize: 15, color: '#bac3c1', lineHeight: 1.5, marginTop: 10}}>
+            中央指挥崩解：第 {simulation.summary.collapse_day.p10}—{simulation.summary.collapse_day.p90} 日<br />
+            中位崩解日：第 {simulation.summary.collapse_day.p50} 日
+          </div>
         </div>
         <div style={{position: 'absolute', left: 38, right: 38, bottom: 34, fontSize: 13, lineHeight: 1.5, color: '#929c99'}}>
           参数为透明情景假设，不是历史频率。节点失守、冲突和人物结局均为反事实模型输出。
